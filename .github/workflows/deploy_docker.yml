@@ -24,31 +24,31 @@ jobs:
       - name: Build and push client
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./client/Dockerfile
+          context: ./client
+          file: client/Dockerfile
           push: true
           tags: aminetakha/multi-client
 
       - name: Build and push worker
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./worker/Dockerfile
+          context: ./worker
+          file: worker/Dockerfile
           push: true
           tags: aminetakha/multi-worker
 
       - name: Build and push server
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./server/Dockerfile
+          context: ./server
+          file: server/Dockerfile
           push: true
           tags: aminetakha/multi-server
 
       - name: Build and push nginx
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./nginx/Dockerfile
+          context: ./nginx
+          file: nginx/Dockerfile
           push: true
           tags: aminetakha/multi-nginx
