@@ -9,4 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: docker build -t aminetakha/multi-client ./client
+      - uses: actions/checkout@v2
       - run: docker build -t aminetakha/multi-nginx ./nginx
+      - uses: actions/checkout@v2
+      - run: docker build -t aminetakha/multi-worker ./worker
+      - uses: actions/checkout@v2
+      - run: docker build -t aminetakha/multi-server ./server
