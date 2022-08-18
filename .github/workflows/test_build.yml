@@ -1,4 +1,4 @@
-Name: Test and push
+name: Test and push
 on:
   push:
     branches: [main]
