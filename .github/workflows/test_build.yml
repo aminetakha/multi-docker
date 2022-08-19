@@ -23,6 +23,8 @@ jobs:
       - run: docker push aminetakha/multi-nginx
       - run: docker push aminetakha/multi-server
       - run: docker push aminetakha/multi-worker
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
         with:
@@ -33,3 +35,4 @@ jobs:
           existing_bucket_name: ${{ secrets.BUCKET_NAME }}
           region: ${{ secrets.REGION }}
           version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
