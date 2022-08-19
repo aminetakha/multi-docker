@@ -23,3 +23,13 @@ jobs:
       - run: docker push aminetakha/multi-nginx
       - run: docker push aminetakha/multi-server
       - run: docker push aminetakha/multi-worker
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ secrets.APPLICATION_NAME }}
+          environment_name: ${{ secrets.ENV_NAME }}
+          existing_bucket_name: ${{ secrets.BUCKET_NAME }}
+          region: ${{ secrets.REGION }}
+          version_label: ${{ github.sha }}

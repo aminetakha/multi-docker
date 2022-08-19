@@ -23,8 +23,8 @@ pgClient.on('connect', client => {
 });
 
 const redisClient = redis.createClient({
-    host: 'redis-server',
-    port: 6379
+    host: keys.redisHost,
+    port: keys.redisPort
 });
 const redisPublisher = redisClient.duplicate();
 
